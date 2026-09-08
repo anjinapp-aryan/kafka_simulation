@@ -97,3 +97,888 @@ body {
   color: var(--text-muted);
   font-size: 0.9rem;
 }
+
+/* ---- Topology section ---- */
+
+.topology-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.topology-diagram {
+  width: 100%;
+  height: 460px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+}
+
+.consumer-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.consumer-controls button {
+  padding: 0.35rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--panel-bg);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.consumer-controls button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.consumer-count {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* ---- Kafka nodes ---- */
+
+.kafka-node {
+  width: 140px;
+  padding: 0.5rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--panel-bg);
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.kafka-node-kind {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-muted);
+}
+
+.kafka-node-title {
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.kafka-node-sub {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-top: 0.2rem;
+}
+
+.kafka-node-producer {
+  border-color: var(--accent);
+}
+
+.kafka-node-partition {
+  cursor: pointer;
+}
+
+.kafka-node-selected {
+  outline: 2px solid var(--accent);
+}
+
+.kafka-node-group-label {
+  border-style: dashed;
+  background: transparent;
+}
+
+.kafka-node-idle {
+  opacity: 0.55;
+  border-style: dashed;
+}
+
+.kafka-node-group-boundary {
+  border: 1.5px dashed var(--accent);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+}
+
+/* ---- Send record panel ---- */
+
+.send-record-panel {
+  display: flex;
+  align-items: end;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.send-record-panel label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  gap: 0.2rem;
+}
+
+.send-record-panel input {
+  padding: 0.35rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.send-record-panel button,
+.why-btn {
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  background: var(--accent);
+  color: var(--accent-text);
+  cursor: pointer;
+  height: fit-content;
+}
+
+/* ---- Partition detail ---- */
+
+.partition-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.partition-detail-header button {
+  padding: 0.25rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--panel-bg);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.record-list {
+  font-size: 0.8rem;
+  padding-left: 1.2rem;
+}
+
+/* ---- Metrics ---- */
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 0.75rem;
+  margin: 0;
+}
+
+.metrics-grid dt {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.metrics-grid dd {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+/* ---- Evidence ---- */
+
+.evidence-panel {
+  margin-top: 1rem;
+  border-top: 1px solid var(--border);
+  padding-top: 0.75rem;
+}
+
+.evidence-tag {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.03em;
+}
+
+.evidence-tag-proven {
+  background: #16a34a;
+  color: #ffffff;
+}
+
+.evidence-tag-simulation {
+  background: #a16207;
+  color: #ffffff;
+}
+
+.evidence-list {
+  font-size: 0.85rem;
+  padding-left: 1.2rem;
+}
+
+/* ---- Interview ---- */
+
+.interview-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.interview-block p {
+  margin: 0.2rem 0 0 0;
+}
+
+.interview-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+}
+
+.interview-memory p {
+  font-style: italic;
+}
+
+.why-btn {
+  width: fit-content;
+}
+
+.why-block {
+  border-left: 2px solid var(--accent);
+  padding-left: 0.6rem;
+}
+
+/* ---- Timeline ---- */
+
+.timeline-list {
+  font-size: 0.8rem;
+  padding-left: 1.2rem;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.timeline-time {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
+/* ---- Assignment / rebalance ---- */
+
+.assignment-panel {
+  font-size: 0.85rem;
+}
+
+.assignment-list {
+  padding-left: 1.2rem;
+  margin: 0.4rem 0 0 0;
+}
+
+.rebalance-controls {
+  display: flex;
+  align-items: end;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.rebalance-controls label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  gap: 0.2rem;
+}
+
+.rebalance-controls select {
+  padding: 0.35rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.rebalance-controls button {
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--panel-bg);
+  color: var(--text);
+  cursor: pointer;
+  height: fit-content;
+}
+
+.danger-btn {
+  border-color: #dc2626 !important;
+  color: #dc2626 !important;
+}
+
+.danger-btn:disabled {
+  opacity: 0.4;
+}
+
+/* ---- Offset / lag ---- */
+
+.offset-lag-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+
+.legend-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 0.2rem;
+}
+
+.legend-current {
+  background: #2563eb;
+}
+
+.legend-committed {
+  background: #16a34a;
+}
+
+.legend-end {
+  background: #6b6b73;
+}
+
+.offset-row {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: 0.3rem 0.75rem;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+}
+
+.offset-row-label {
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.offset-ruler {
+  position: relative;
+  height: 20px;
+  grid-column: 2;
+}
+
+.offset-ruler-track {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--border);
+  transform: translateY(-50%);
+}
+
+.offset-marker {
+  position: absolute;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.offset-marker-current {
+  background: #2563eb;
+  z-index: 2;
+}
+
+.offset-marker-committed {
+  background: #16a34a;
+  z-index: 1;
+}
+
+.offset-marker-end {
+  background: #6b6b73;
+  width: 3px;
+  height: 16px;
+  border-radius: 1px;
+}
+
+.offset-row-numbers {
+  grid-column: 2;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.offset-row-actions {
+  grid-column: 2;
+  display: flex;
+  gap: 0.4rem;
+}
+
+.offset-row-actions button {
+  padding: 0.25rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--panel-bg);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.total-lag {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* ---- Commit flow demo ---- */
+
+.commit-flow-demo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.commit-flow-mode {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.85rem;
+}
+
+.commit-flow-controls {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.commit-flow-controls button {
+  padding: 0.35rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--panel-bg);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.commit-flow-controls button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.commit-flow-status {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.commit-flow-result {
+  font-size: 0.9rem;
+  border-left: 2px solid var(--accent);
+  padding-left: 0.6rem;
+}
+
+/* ---- Question set (Q&A cards) ---- */
+
+.qa-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.qa-card {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+}
+
+.qa-card-header {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  color: var(--text);
+  cursor: pointer;
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0;
+}
+
+.qa-simple {
+  margin: 0.3rem 0 0 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.qa-details {
+  margin-top: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.qa-details p {
+  margin: 0.15rem 0 0 0;
+  font-size: 0.85rem;
+}
+
+.reveal-answer-btn {
+  margin-top: 0.4rem;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--accent);
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.evidence-tag-conceptual {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+/* ---- Shared small-widget primitives (producer/lag/replication/transaction/saga) ---- */
+
+.producer-config-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  font-size: 0.85rem;
+}
+
+.producer-config-grid label,
+.producer-config-grid select {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.producer-reliability-panel,
+.lag-simulator-panel,
+.replication-panel,
+.transaction-panel,
+.saga-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.producer-reliability-panel button,
+.lag-simulator-panel button,
+.replication-panel button,
+.transaction-panel button,
+.saga-panel button {
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--panel-bg);
+  color: var(--text);
+  cursor: pointer;
+  width: fit-content;
+}
+
+.two-layer-diagram {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.layer-box {
+  flex: 1;
+  min-width: 200px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.6rem 0.8rem;
+}
+
+.retry-steps {
+  font-size: 0.8rem;
+  padding-left: 1.2rem;
+  color: var(--text-muted);
+}
+
+/* ---- Lag simulator ---- */
+
+.lag-sim-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* ---- Replication ---- */
+
+.broker-controls {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.broker-badge {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  align-items: flex-start;
+  font-size: 0.85rem;
+}
+
+.broker-dead {
+  opacity: 0.6;
+  border-color: #dc2626;
+}
+
+.replication-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+.replication-table th,
+.replication-table td {
+  border: 1px solid var(--border);
+  padding: 0.4rem 0.6rem;
+  text-align: left;
+}
+
+.min-isr-test {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  align-items: flex-start;
+}
+
+/* ---- Transactions ---- */
+
+.isolation-toggle {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.85rem;
+}
+
+/* ---- Saga ---- */
+
+.saga-flow {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.saga-step {
+  padding: 0.4rem 0.7rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  font-size: 0.85rem;
+}
+
+.saga-step-ok {
+  border-color: #16a34a;
+}
+
+.saga-step-failed {
+  border-color: #dc2626;
+  color: #dc2626;
+}
+
+.saga-step-skipped {
+  opacity: 0.4;
+}
+
+.saga-compensation {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.saga-controls {
+  font-size: 0.85rem;
+}
+
+/* ---- Production scenarios ---- */
+
+.scenario-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.scenario-card {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.6rem 0.8rem;
+}
+
+.scenario-card p {
+  margin: 0.1rem 0 0.4rem 0;
+  font-size: 0.85rem;
+}
+
+/* ---- Mode shell (Learn / Interview / Banking / Troubleshooting) ---- */
+
+.app-shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem 1rem 0 1rem;
+}
+
+.app-shell .app {
+  padding: 0;
+  max-width: none;
+}
+
+.mode-nav {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.mode-btn {
+  padding: 0.45rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--panel-bg);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.mode-btn.active {
+  background: var(--accent);
+  color: var(--accent-text);
+  border-color: var(--accent);
+}
+
+/* ---- Interview mode ---- */
+
+.interview-mode {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.interview-filters {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.interview-filters label {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.interview-filters select {
+  padding: 0.3rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.interview-progress {
+  margin-left: auto;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.interview-card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.interview-card-meta {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  font-size: 0.75rem;
+}
+
+.interview-topic-badge {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.1rem 0.6rem;
+  color: var(--text-muted);
+}
+
+.interview-question {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.interview-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--border);
+  padding-top: 0.75rem;
+}
+
+.interview-actions button,
+.connected-evidence button,
+.progress-summary button {
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--panel-bg);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.interview-actions button.marked {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.connected-evidence {
+  border-left: 2px solid var(--accent);
+  padding-left: 0.6rem;
+}
+
+/* ---- Progress / memory map / troubleshooting ---- */
+
+.progress-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  align-items: flex-start;
+}
+
+.memory-map-diagram {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.75rem;
+  overflow-x: auto;
+}
+
+.command-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.command-block {
+  font-size: 0.75rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.5rem;
+  overflow-x: auto;
+  margin: 0.2rem 0;
+}
