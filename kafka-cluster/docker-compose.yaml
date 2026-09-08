@@ -1,32 +1,64 @@
 version: "3.8"
 services:
   kafka1:
-    image: suhail50/kafka
+    image: apache/kafka:3.8.1
     container_name: kafka1
     ports:
     - "8081:8081"
     environment:
-      - KAFKA_CLUSTER_ID=TestCluster
+      CLUSTER_ID: TestCluster
+      KAFKA_NODE_ID: 1
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_LISTENERS: INTERNAL://:9092,CONTROLLER://:9093,EXTERNAL://:8081
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka1:9092,EXTERNAL://localhost:8081
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@kafka1:9093,2@kafka2:9093,3@kafka3:9093
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT,SSL:SSL,SASL_PLAINTEXT:SASL_PLAINTEXT,SASL_SSL:SASL_SSL
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "false"
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 3
+      KAFKA_LOG_DIRS: /tmp/kafka-logs
     volumes:
-    - ./properties/server1.properties:/kafka/config/kraft/server.properties
     - ./data/broker1:/tmp/kafka-logs
+
   kafka2:
-    image: suhail50/kafka
+    image: apache/kafka:3.8.1
     container_name: kafka2
     ports:
     - "8082:8082"
     environment:
-      - KAFKA_CLUSTER_ID=TestCluster
+      CLUSTER_ID: TestCluster
+      KAFKA_NODE_ID: 2
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_LISTENERS: INTERNAL://:9092,CONTROLLER://:9093,EXTERNAL://:8082
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka2:9092,EXTERNAL://localhost:8082
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@kafka1:9093,2@kafka2:9093,3@kafka3:9093
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT,SSL:SSL,SASL_PLAINTEXT:SASL_PLAINTEXT,SASL_SSL:SASL_SSL
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "false"
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 3
+      KAFKA_LOG_DIRS: /tmp/kafka-logs
     volumes:
-    - ./properties/server2.properties:/kafka/config/kraft/server.properties
-    - ./data/broker2:/tmp/kafka-logs     
+    - ./data/broker2:/tmp/kafka-logs
+
   kafka3:
-    image: suhail50/kafka
+    image: apache/kafka:3.8.1
     container_name: kafka3
     ports:
     - "8083:8083"
     environment:
-      - KAFKA_CLUSTER_ID=TestCluster
+      CLUSTER_ID: TestCluster
+      KAFKA_NODE_ID: 3
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_LISTENERS: INTERNAL://:9092,CONTROLLER://:9093,EXTERNAL://:8083
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka3:9092,EXTERNAL://localhost:8083
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@kafka1:9093,2@kafka2:9093,3@kafka3:9093
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT,SSL:SSL,SASL_PLAINTEXT:SASL_PLAINTEXT,SASL_SSL:SASL_SSL
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "false"
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 3
+      KAFKA_LOG_DIRS: /tmp/kafka-logs
     volumes:
-    - ./properties/server3.properties:/kafka/config/kraft/server.properties
-    - ./data/broker3:/tmp/kafka-logs           
+    - ./data/broker3:/tmp/kafka-logs
