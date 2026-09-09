@@ -85,7 +85,14 @@ export const useAppStore = create<AppState>((set, get) => ({
     const state = get();
     const consumers = state.topology.consumerGroup.consumers;
     if (consumers.length >= MAX_CONSUMERS) return;
-    const nextId = `C${consumers.length + 1}`;
+    // Derive from the highest existing number, not the count: after killing a
+    // middle consumer (e.g. C2 from C1/C2/C3), a count-based id would collide
+    // with an existing one and produce duplicate React keys.
+    const highest = consumers.reduce((max, c) => {
+      const n = Number(c.id.replace(/^C/, ''));
+      return Number.isFinite(n) && n > max ? n : max;
+    }, 0);
+    const nextId = `C${highest + 1}`;
     const nextTopology = applyAssignment({
       ...state.topology,
       consumerGroup: {

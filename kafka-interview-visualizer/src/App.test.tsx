@@ -179,6 +179,31 @@ function goToPhase(id: string) {
   fireEvent.click(screen.getByRole('button', { name: id }));
 }
 
+describe('consumer id generation (regression: duplicate React keys)', () => {
+  beforeEach(resetStore);
+
+  it('adding a consumer after killing a middle one never reuses an existing id', () => {
+    const store = useAppStore.getState();
+    // start C1,C2,C3 -> kill C2 -> C1,C3 -> add -> must NOT be another C3
+    store.killConsumer('C2', 'crash');
+    useAppStore.getState().addConsumer();
+
+    const ids = useAppStore.getState().topology.consumerGroup.consumers.map((c) => c.id);
+    expect(new Set(ids).size).toBe(ids.length);
+    expect(ids).toEqual(['C1', 'C3', 'C4']);
+  });
+
+  it('ids stay unique across repeated kill/add cycles', () => {
+    for (let i = 0; i < 3; i++) {
+      const consumers = useAppStore.getState().topology.consumerGroup.consumers;
+      useAppStore.getState().killConsumer(consumers[0].id, 'graceful');
+      useAppStore.getState().addConsumer();
+      const ids = useAppStore.getState().topology.consumerGroup.consumers.map((c) => c.id);
+      expect(new Set(ids).size).toBe(ids.length);
+    }
+  });
+});
+
 describe('P7 producer reliability (Step 4)', () => {
   beforeEach(() => {
     resetStore();
